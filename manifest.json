@@ -1,0 +1,110 @@
+{
+  "manifest_version": "0.2",
+  "name": "date-operations",
+  "display_name": "Date Operations - Global Edition",
+  "version": "1.1.0",
+  "description": "Accurate date calculations with personal timezone and bank holiday support for global teams",
+  "long_description": "This extension provides reliable working day calculations, sprint planning tools, and Asana due date formatting with support for 14 countries across The Access Group's global offices.\n\n**Key Features:**\n- Working day calculations (excludes weekends and your local bank holidays)\n- Personal timezone support (14 countries supported)\n- Asana due date formatting (configurable time)\n- Sprint planning and current sprint calculations\n- Bank holiday checking from official sources\n\n**Supported Countries:**\nUK, Romania, Spain, Ireland, Denmark, Germany, Poland, USA, New Zealand, Australia, Malaysia, Sri Lanka, Thailand, Vietnam\n\n**Perfect for:**\n- Business Analysts managing user stories and sprints\n- Project managers calculating deadlines\n- Global teams needing personal working day context\n- Anyone who needs reliable date arithmetic with local holidays",
+  "author": {
+    "name": "James Murrell",
+    "email": "james.murrell@theaccessgroup.com"
+  },
+  "homepage": "https://github.com/murrelljames/date-operations-mcp",
+  "keywords": [
+    "dates",
+    "calendar",
+    "working-days",
+    "bank-holidays",
+    "global",
+    "asana",
+    "sprint-planning",
+    "business-analyst"
+  ],
+  "license": "MIT",
+  "server": {
+    "type": "node",
+    "entry_point": "build/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
+      "env": {
+        "BANK_HOLIDAY_COUNTRY": "${user_config.bank_holiday_country}",
+        "ASANA_DUE_HOUR": "${user_config.asana_due_hour}"
+      }
+    }
+  },
+  "user_config": {
+    "bank_holiday_country": {
+      "type": "string",
+      "title": "Your Country Code",
+      "description": "Enter your country code: NONE (weekends only), GB (UK), RO (Romania), ES (Spain), IE (Ireland), DK (Denmark), DE (Germany), PL (Poland), US (USA), NZ (New Zealand), AU (Australia), MY (Malaysia), LK (Sri Lanka), TH (Thailand), VN (Vietnam)",
+      "default": "NONE",
+      "required": true
+    },
+    "asana_due_hour": {
+      "type": "number",
+      "title": "Asana Task Due Time (24-hour)",
+      "description": "What hour should Asana tasks be due? (0-23, default is 16 for 4:00 PM)",
+      "default": 16,
+      "min": 0,
+      "max": 23,
+      "required": false
+    }
+  },
+  "tools": [
+    {
+      "name": "get_today_uk",
+      "description": "Get the current date in your configured timezone"
+    },
+    {
+      "name": "calculate_working_days",
+      "description": "Calculate a date by adding or subtracting working days (excludes weekends and your configured bank holidays)"
+    },
+    {
+      "name": "get_next_working_day",
+      "description": "Get the next working day after a given date"
+    },
+    {
+      "name": "get_working_days_between",
+      "description": "Count working days between two dates"
+    },
+    {
+      "name": "is_uk_bank_holiday",
+      "description": "Check if a specific date is a bank holiday in your configured country"
+    },
+    {
+      "name": "get_upcoming_bank_holidays",
+      "description": "Get list of upcoming bank holidays for your configured country"
+    },
+    {
+      "name": "calculate_sprint_dates",
+      "description": "Calculate sprint start and end dates based on sprint length"
+    },
+    {
+      "name": "get_current_sprint_info",
+      "description": "Get information about current sprint based on first sprint start date"
+    },
+    {
+      "name": "get_asana_due_date",
+      "description": "Get Asana due date following configured rules (next working day at your configured time)"
+    },
+    {
+      "name": "parse_asana_date_request",
+      "description": "Parse natural language date requests for Asana (e.g., 'tomorrow', 'in 3 days')"
+    }
+  ],
+  "tools_generated": false,
+  "compatibility": {
+    "claude_desktop": ">=0.14.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}
