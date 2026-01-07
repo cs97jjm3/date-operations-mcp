@@ -161,3 +161,19 @@ node build/index.js
 - All dates use UK timezone (Europe/London) with automatic GMT/BST handling
 - Friday tasks automatically roll to Monday per James's Asana rules
 - Working days exclude weekends AND UK bank holidays
+
+---
+
+## 📚 Want to Build Tools Like This?
+
+This tool was built using the process documented in **["The Business Analyst's Guide to AI-Assisted Tool Development"](https://gumroad.com/l/ba-ai-tools)**.
+
+Learn how to:
+- Identify workflows worth automating
+- Work effectively with AI as a collaborator
+- Build production-ready tools without being a developer
+- Avoid common pitfalls and mistakes
+
+**£5 • Real code • Real examples • Real process**
+
+Available February 4th, 2025
